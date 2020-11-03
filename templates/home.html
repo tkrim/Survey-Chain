@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Survey-Chain</h1>
+</div>
+<div class="content">
+  {% if user.is_authenticated %}
+    <h2>Hi {{ user.username }}!</h2>
+    <button type="submit"><a href="{% url 'logout' %}" class="top-menu">Log Out</a></button>
+  <header>
+  {% endif %}
+</div>
+<div class="app-links">
+  <h4><a href="{% url 'polls:index' %}">Polls</a></h4>
+</div>
+<div class="home-message">
+  <p>Please login or signup to access all website features.</p>
+  <br>
+  <p>Please login or signup to access all website features.</p>
+  <p>For the moment, you may even sign up with a fake email address to test the sites functionality.</p>
+</div>
+<div class="login-logout-buttons">
+    <button type="submit"><a href="{% url 'login' %}">Log In</a></button> |
+    <button type="submit"><a href="{% url 'users:signup' %}">Sign Up</a></button>
+</div>
+{% endblock %}

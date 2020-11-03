@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vote Results</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="page-header">
+        {% if user.is_authenticated %}
+        <a href="{% url 'polls:new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
+        <a href="{% url 'home' %}" class="top-menu"><span class="glyphicon glyphicon-home"></span></a>
+    <h1><a href="{% url 'polls:index' %}">Choices</a></h1>
+    </div>
+    <div class="content">
+    <h1>{{ question.question_text }}</h1>
+    <ul>
+    {% for choice in question.choice_set.all %}
+      <p>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</p>
+    {% endfor %}
+    </ul>
+
+    <button><a href="{% url 'polls:index' %}">Vote again?</a></button>
+    </div>
+  </body>
+</html>
