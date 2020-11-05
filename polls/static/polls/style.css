@@ -10,6 +10,11 @@
     text-decoration: none;
 }
 
+.blockchain {
+    margin: 30px;
+    padding: 20px;
+}
+
 .content {
     margin-left: 40px;
 }

@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:question_id>/vote/', views.vote, name='vote'),
     # page for adding a new poll
     path('new/', views.new_poll, name='new'),
+    path('blockchain/', views.blockchain_info, name='blockchain'),
 ]

@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Polls Homepage</title>
+    <title>Question Detail</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
@@ -16,27 +16,13 @@
         <a href="{% url 'polls:new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
         <a href="{% url 'home' %}" class="top-menu"><span class="glyphicon glyphicon-home"></span></a>
-        <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class="glyphicon glyphicon-bitcoin"></span></a>
-        <h1><a href="{% url 'polls:index' %}">Question List</a></h1>
+        <h1>Ethereum</h1>
     </div>
-    <div>
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <h4><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a> -- Created By {{ question.author|title }}</h4>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+    <div class="content">
+    <div class="blockchain">
+        <p>Connected to node? {{ connection_status }}</p>
+        <p>Current block number: {{ current_block_num }}</p>
     </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
-        </div>
     </div>
   </body>
 </html>
