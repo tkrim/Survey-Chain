@@ -7,6 +7,7 @@
   <h1>Survey-Chain</h1>
 </div>
 <div class="content">
+<div class="auth">
   {% if user.is_authenticated %}
     <h2>Hi {{ user.username }}!</h2>
     <button type="submit"><a href="{% url 'logout' %}" class="top-menu">Log Out</a></button>
@@ -25,5 +26,6 @@
 <div class="login-logout-buttons">
     <button type="submit"><a href="{% url 'login' %}">Log In</a></button> |
     <button type="submit"><a href="{% url 'users:signup' %}">Sign Up</a></button>
+</div>
 </div>
 {% endblock %}

@@ -1,3 +1,7 @@
+import json
+from web3 import Web3
+from datetime import datetime
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -9,6 +13,21 @@ from django.conf import settings
 
 from .models import Question, Choice, VoterSelection
 from .forms import *
+
+# URL of Node Provider Service
+url = 'https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57'
+web3 = Web3(Web3.HTTPProvider(url))
+#address = web3.toChecksumAddress() #address to deployed smart contract
+
+# function based view to check Ethereum Node information
+def blockchain_info(request):
+    connection_status = web3.isConnected()
+    current_block_num = web3.eth.blockNumber
+    tmpl_vars = {
+        'connection_status': connection_status,
+        'current_block_num': current_block_num,
+    }
+    return render(request, 'polls/blockchain.html', tmpl_vars)
 
 class IndexView(generic.ListView):
     
