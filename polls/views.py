@@ -15,7 +15,7 @@ from .models import Question, Choice, VoterSelection
 from .forms import *
 
 # URL of Node Provider Service
-url = 'https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57'
+url = 'https://mainnet.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57'
 web3 = Web3(Web3.HTTPProvider(url))
 #address = web3.toChecksumAddress() #address to deployed smart contract
 
@@ -23,10 +23,19 @@ web3 = Web3(Web3.HTTPProvider(url))
 def blockchain_info(request):
     connection_status = web3.isConnected()
     current_block_num = web3.eth.blockNumber
+    # wallet address from form input
+    #print(request.GET)
+    address = request.GET.get('address')
+    wallet_balance = web3.eth.getBalance(address)
+    wallet_balance = web3.fromWei(wallet_balance, "ether") # convert to ether
+    
     tmpl_vars = {
         'connection_status': connection_status,
         'current_block_num': current_block_num,
+        'wallet_balance': wallet_balance,
+        'address': address,
     }
+        
     return render(request, 'polls/blockchain.html', tmpl_vars)
 
 class IndexView(generic.ListView):
