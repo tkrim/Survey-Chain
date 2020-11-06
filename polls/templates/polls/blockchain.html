@@ -19,10 +19,22 @@
         <h1>Ethereum</h1>
     </div>
     <div class="content">
-    <div class="blockchain">
-        <p>Connected to node? {{ connection_status }}</p>
-        <p>Current block number: {{ current_block_num }}</p>
-    </div>
+		<div class="blockchain">
+			<p>Connected to node? {{ connection_status }}</p>
+			<p>Current block number (Ropsten Network): {{ current_block_num }}</p>
+			<br>
+			<div class="wallet amount">
+				<form method="GET">
+					{% csrf_token %}
+					<label for="wallet address">Enter the wallet address:</label>
+					<input type="text" id="wallet address" name="address">
+					<input type="submit" value="Submit">
+				</form>
+				<br>
+				<p>You entered the wallet address of: {{ address }}</p>
+				<p>The amount in this wallet is: {{ wallet_balance }}</p>
+			</div>
+		</div>
     </div>
   </body>
 </html>
