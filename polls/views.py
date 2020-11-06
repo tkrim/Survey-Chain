@@ -25,17 +25,25 @@ def blockchain_info(request):
     current_block_num = web3.eth.blockNumber
     # wallet address from form input
     #print(request.GET)
-    address = request.GET.get('address')
-    wallet_balance = web3.eth.getBalance(address)
-    wallet_balance = web3.fromWei(wallet_balance, "ether") # convert to ether
+    if request.method == None:
+        pass
+    elif request.method == 'POST':
+        address = request.POST.get('address')
+        print(address)
+        wallet_balance = web3.eth.getBalance(address)
+        wallet_balance = web3.fromWei(wallet_balance, "ether") # convert to ether
     
+        tmpl_vars = {
+            'connection_status': connection_status,
+            'current_block_num': current_block_num,
+            'wallet_balance': wallet_balance,
+            'address': address,
+        }
+        return render(request, 'polls/blockchain.html', tmpl_vars)
     tmpl_vars = {
-        'connection_status': connection_status,
-        'current_block_num': current_block_num,
-        'wallet_balance': wallet_balance,
-        'address': address,
-    }
-        
+            'connection_status': connection_status,
+            'current_block_num': current_block_num,
+        }
     return render(request, 'polls/blockchain.html', tmpl_vars)
 
 class IndexView(generic.ListView):

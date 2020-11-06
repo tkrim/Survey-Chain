@@ -24,7 +24,7 @@
 			<p>Current block number (Ropsten Network): {{ current_block_num }}</p>
 			<br>
 			<div class="wallet amount">
-				<form method="GET">
+				<form method="POST">
 					{% csrf_token %}
 					<label for="wallet address">Enter the wallet address:</label>
 					<input type="text" id="wallet address" name="address">
