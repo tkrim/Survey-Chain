@@ -15,7 +15,7 @@ from .models import Question, Choice, VoterSelection
 from .forms import *
 
 # URL of Node Provider Service
-url = 'https://mainnet.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57'
+url = 'https://ropsten.infura.io/v3/60ccb3c382e44f5b87d4ce6ce0306e57'
 web3 = Web3(Web3.HTTPProvider(url))
 #address = web3.toChecksumAddress() #address to deployed smart contract
 
