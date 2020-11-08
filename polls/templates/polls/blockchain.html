@@ -27,7 +27,7 @@
 		<form method="POST">
 		    {% csrf_token %}
 		    <label for="wallet address">Enter the wallet address:</label>
-		    <input type="text" id="wallet address" name="address" class="form-control">
+		    <input type="text" id="wallet address" name="address" placeholder="0x..." size="45">
 		    <input type="submit" value="Submit">
 		</form>
 		<br>

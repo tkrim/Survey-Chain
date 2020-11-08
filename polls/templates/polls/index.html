@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="{% static 'polls/all.css' %}" type="text/css" rel="stylesheet">
   </head>
   <body>
     <div class="page-header">
@@ -16,7 +18,7 @@
         <a href="{% url 'polls:new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
         <a href="{% url 'home' %}" class="top-menu"><span class="glyphicon glyphicon-home"></span></a>
-        <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class="glyphicon glyphicon-bitcoin"></span></a>
+        <a href="{% url 'polls:blockchain' %}" class="top-menu"><span class=""><i class="fab fa-ethereum" style='font-size:50px;color:black'></i></span></a>
         <h1><a href="{% url 'polls:index' %}">Question List</a></h1>
     </div>
     <div>
